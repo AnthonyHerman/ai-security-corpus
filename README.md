@@ -248,6 +248,7 @@ Every category is a plain markdown file of `- [Title](url)` lines under `## ` se
 | Obsidian vault | `python3 scripts/sync-vault.py` regenerates [`vault/`](vault/) with one note per category, wiki-linked and tagged |
 | Website | `python3 scripts/build-site.py` renders every category to a static page at [anthonyherman.github.io/ai-security-corpus](https://anthonyherman.github.io/ai-security-corpus/) with client-side search (deployed by CI on every push) |
 | Stats and charts | `python3 scripts/stats.py` recounts the corpus, redraws the SVGs in [`assets/`](assets/), and rewrites the numbers above (also runs in CI on every push) |
+| Data feed | the site build also publishes every link as JSON at [`/intel.json`](https://anthonyherman.github.io/ai-security-corpus/intel.json) (`{title, url, category, section, added}` per link) and [`/intel-meta.json`](https://anthonyherman.github.io/ai-security-corpus/intel-meta.json) (`{count, generated_at, commit}`) for anything that wants the corpus as data |
 
 <p align="center"><sub>Links are added, not endorsed. Some of them are wrong, some are marketing, some are exploits. That is the corpus.</sub></p>
 

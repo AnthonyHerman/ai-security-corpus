@@ -2,7 +2,9 @@
 """Build the static site for GitHub Pages into _site/.
 
 Reuses the corpus parser from stats.py so the site, the README and the vault
-always count the same links.
+always count the same links. Also publishes the corpus as data: _site/intel.json
+(every link with its category, section and the date it was added) and
+_site/intel-meta.json (count, HEAD commit and its date).
 
 Usage: python3 scripts/build-site.py [--data-only]
 """
@@ -89,6 +91,100 @@ def load_corpus():
         "updated": stats.updated() if hasattr(stats, "updated") else None,
         "groups": groups,
     }
+
+
+# ---------------------------------------------------------------- intel feed
+def first_added():
+    """URL -> YYYY-MM-DD (author date) of the commit that first added a line carrying that URL to any
+    category file, in whatever form it had then (a '- [title](url)' row, a table cell, a bare URL: the
+    same notion as the growth chart). One git call over the whole history, so it costs the same for 5
+    links or 50,000, and a link that moved between files or had its title fixed keeps its first date."""
+    out = subprocess.run(["git", "log", "--reverse", "--format=%x00%as", "-p", "--no-renames", "--", "*.md",
+                          ":(exclude)vault", ":(exclude).claude"],
+                         cwd=ROOT, capture_output=True, text=True).stdout
+    dates, date = {}, ""
+    for line in out.split("\n"):
+        if line.startswith("\x00"):
+            date = line[1:].strip()
+        elif line.startswith("+") and not line.startswith("+++ "):
+            for url in stats.URL.findall(line):
+                dates.setdefault(url, date)
+    return dates
+
+
+def first_commit(path, _cache={}):
+    """Date of the first commit touching path: the fallback for a line git has not seen added
+    (an uncommitted edit, a link that only ever lived in a table)."""
+    if path not in _cache:
+        log = subprocess.run(["git", "log", "--reverse", "--format=%as", "--", path],
+                             cwd=ROOT, capture_output=True, text=True).stdout.split("\n")
+        _cache[path] = next((d.strip() for d in log if d.strip()), "")
+    return _cache[path]
+
+
+def load_intel(toc):
+    """Every link as a flat row for machine consumers, shaped like itspricedin's pull-intel.py output
+    plus `added`: the TOC category name, the '## ' section it sits under ('' above the first heading),
+    the title as written (160 chars max), and the first URL occurrence corpus-wide wins."""
+    added = first_added()
+    items, seen = [], set()
+    for _, cats in toc:
+        for cat, path, _ in cats:
+            section = ""
+            for line in (ROOT / path).read_text(encoding="utf-8").split("\n"):
+                if line.startswith("## "):
+                    section = line[3:].strip()
+                    continue
+                m = stats.LINK.match(line)
+                if not m or m.group(2) in seen:
+                    continue
+                url = m.group(2)
+                seen.add(url)
+                items.append({"title": m.group(1).strip()[:160], "url": url, "category": cat,
+                              "section": section, "added": added.get(url) or first_commit(path)})
+    return items
+
+
+def intel_meta(items):
+    """{count, generated_at, commit} from HEAD, so two builds of the same commit are byte-identical."""
+    head = subprocess.run(["git", "log", "-1", "--format=%H %cI"], cwd=ROOT,
+                          capture_output=True, text=True).stdout.split()
+    sha, when = (head + ["", ""])[:2]
+    return {"count": len(items), "generated_at": when, "commit": sha}
+
+
+DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def check_intel(items, meta):
+    """Fail the build rather than publish a feed a consumer cannot trust: every row has the five
+    string fields, a real http(s) URL, a date, no URL twice, and the meta matches the rows."""
+    seen = set()
+    for i, row in enumerate(items):
+        if set(row) != {"title", "url", "category", "section", "added"} or not all(isinstance(v, str) for v in row.values()):
+            raise ValueError("intel row %d has the wrong shape: %r" % (i, row))
+        if not row["title"] or not row["category"]:
+            raise ValueError("intel row %d has an empty title or category: %r" % (i, row))
+        if not re.match(r"^https?://\S+$", row["url"]) or row["url"] in seen:
+            raise ValueError("intel row %d has a bad or repeated url: %r" % (i, row["url"]))
+        if not DATE.match(row["added"]):
+            raise ValueError("intel row %d has a bad added date: %r" % (i, row["added"]))
+        seen.add(row["url"])
+    if set(meta) != {"count", "generated_at", "commit"} or meta["count"] != len(items):
+        raise ValueError("intel meta does not describe the rows: %r" % meta)
+    if not re.match(r"^[0-9a-f]{40}$", meta["commit"]) or not re.match(r"^\d{4}-\d{2}-\d{2}T", meta["generated_at"]):
+        raise ValueError("intel meta needs a full commit sha and an ISO timestamp: %r" % meta)
+
+
+def write_intel():
+    toc = stats.parse_toc(stats.README.read_text(encoding="utf-8"))
+    items = load_intel(toc)
+    meta = intel_meta(items)
+    check_intel(items, meta)
+    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / "intel.json").write_text(json.dumps(items, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (OUT / "intel-meta.json").write_text(json.dumps(meta, separators=(",", ":")), encoding="utf-8")
+    return items, meta
 
 
 # ---------------------------------------------------------------- render
@@ -616,6 +712,8 @@ def main():
     (OUT / "data").mkdir(parents=True, exist_ok=True)
     (OUT / "data" / "corpus.json").write_text(json.dumps(corpus, ensure_ascii=False, separators=(",", ":")))
     print(f"{corpus['total']:,} links · {corpus['categories']} categories · {corpus['sections']} sections -> {OUT/'data'/'corpus.json'}")
+    meta = write_intel()[1]
+    print(f"{meta['count']:,} intel rows @ {meta['commit'][:7]} -> {OUT/'intel.json'}, {OUT/'intel-meta.json'}")
     if "--data-only" in sys.argv:
         return
     n = render_site(corpus)
