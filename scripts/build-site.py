@@ -354,6 +354,7 @@ def head_html(d, title, desc, prefix, url, jsonld, noindex=False):
 <meta name="twitter:image" content="%s">
 <link rel="icon" href="%sassets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="%sstyle.css">
+<script src="%sembed.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="%s" onload="this.onload=null;this.rel='stylesheet'">
@@ -363,7 +364,7 @@ def head_html(d, title, desc, prefix, url, jsonld, noindex=False):
 <body>
 <a class="skip" href="#main">Skip to content</a>
 """ % (prefix, esc(title), esc(desc), canon, THEME, SITE_NAME, esc(title), esc(desc), esc(og),
-       esc(title), esc(desc), esc(og), prefix, prefix, esc(FONTS), esc(FONTS), json.dumps(jsonld, separators=(",", ":")))
+       esc(title), esc(desc), esc(og), prefix, prefix, prefix, esc(FONTS), esc(FONTS), json.dumps(jsonld, separators=(",", ":")))
 
 
 def search_html(d, prefix, label=None):
@@ -691,6 +692,7 @@ def render_site(d):
     write(OUT / "404.html", render_404(d))
     write(OUT / "style.css", (SITE_DIR / "style.css").read_text(encoding="utf-8"))
     write(OUT / "script.js", (SITE_DIR / "script.js").read_text(encoding="utf-8"))
+    write(OUT / "embed.js", (SITE_DIR / "embed.js").read_text(encoding="utf-8"))   # ?embed=acid: the site inside itspricedin.lol's IE window
     (OUT / "assets").mkdir(exist_ok=True)
     for name in ("categories-dark.svg", "growth-dark.svg", "sources-dark.svg", "social-preview.png"):
         shutil.copyfile(ASSETS / name, OUT / "assets" / name)

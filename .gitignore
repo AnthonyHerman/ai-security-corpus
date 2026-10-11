@@ -1,6 +1,7 @@
 .serena/
 _site/
 scripts/__pycache__/
+tests/__pycache__/
 
 # Beads / Dolt files (added by bd init)
 .dolt/
