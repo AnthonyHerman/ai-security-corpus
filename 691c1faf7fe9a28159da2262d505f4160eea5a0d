@@ -1,0 +1,364 @@
+{
+  "origin": {
+    "version": 1,
+    "sessionId": "80551366-b16d-41f6-9fec-fca8f1ab0f53",
+    "model": "claude-fable-5-1",
+    "agent": "claude-code",
+    "promptCount": 38,
+    "promptHash": "sha256:acc5747554b5889da1eb72301ecaf9a912dc3bc67cf7630897c4f85398f6cb1b",
+    "promptTextWithheld": true,
+    "filesRead": [
+      "/home/moji/repos/itspricedin-lol/app/static/js/owned.js",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/mobile_addons_fixed.png",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/probe/desktop375_msg.png",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/repro_va4htgoz/A.png",
+      "/home/moji/.claude/projects/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/tool-results/bhx4koux5.txt",
+      "/home/moji/.claude/projects/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/tool-results/bt33tvu2f.txt",
+      "/home/moji/repos/.wt/liquid/app/static/js/desktop.js",
+      "/home/moji/repos/.wt/liquid/app/static/css/acid.css",
+      "/home/moji/repos/.wt/liquid/app/static/js/effects.js",
+      "/home/moji/repos/.wt/polish/app/static/js/desktop.js",
+      "/home/moji/repos/.wt/polish/app/templates/base.html",
+      "/home/moji/repos/.wt/ie-corpus/app/static/js/desktop.js",
+      "/home/moji/repos/.wt/ie-corpus/app/static/js/toolbars.js",
+      "/home/moji/repos/.wt/polish/app/templates/bsod.html",
+      "/home/moji/repos/.wt/ie-corpus/app/templates/base.html",
+      "/home/moji/repos/.wt/polish/tests/e2e/conftest.py",
+      "/home/moji/repos/.wt/ie-corpus/tests/e2e/conftest.py",
+      "/home/moji/repos/.wt/polish/app/static/js/tape.js",
+      "/home/moji/repos/.wt/polish/app/templates/_tape.html",
+      "/home/moji/repos/.wt/polish/tests/test_http.py",
+      "/home/moji/repos/.wt/ie-corpus/tests/e2e/test_toolbars.py",
+      "/home/moji/repos/.wt/ie-corpus/tests/test_toolbars.py",
+      "/home/moji/repos/.wt/ie-corpus/tests/test_http.py",
+      "/home/moji/repos/.wt/ie-corpus/app/templates/intel.html",
+      "/home/moji/repos/.wt/ie-corpus/tests/conftest.py",
+      "/home/moji/repos/.wt/backend/app/main.py",
+      "/home/moji/repos/.wt/backend/tests/test_http.py",
+      "/home/moji/repos/.wt/backend/tests/test_owned.py",
+      "/home/moji/repos/.wt/backend/app/templates/index.html",
+      "/home/moji/repos/.wt/backend/app/static/js/owned.js",
+      "/home/moji/repos/.wt/backend/app/static/css/owned.css",
+      "/home/moji/repos/.wt/polish/tests/e2e/screenshots/taskbar-flyout.png",
+      "/home/moji/repos/.wt/polish/tests/e2e/screenshots/router-three-groups.png",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/geom.png",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/shots/drag.png",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/shots/minimize.png",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/shots/settled.png",
+      "/tmp/claude-1000/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/scratchpad/shots/menu.png",
+      "/home/moji/repos/.wt/ie-corpus/tests/e2e/screenshots/iexplore-corpus.png"
+    ],
+    "prompts": [
+      {
+        "index": 0,
+        "promptHash": "sha256:4af8a68f7b7ad35a2214df2582e8d291d2be800c342b4f69cabe3eb9c6477242",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":0,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 1,
+        "promptHash": "sha256:9bb1262bf4ef7d797f3a5aeddcdf51ffc3a2220ada5334c0ee9573295a9a1c9c",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":1,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 2,
+        "promptHash": "sha256:440411f92a42a6dee1aff78f1b521275e761c33736b497d29cefea9cc6212af4",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":2,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0,\"outOfRepoFiles\":[\"~/.claude/projects/-home-moji-repos-ai-security/memory/itspricedin-deployment.md\",\"~/.claude/projects/-home-moji-repos-ai-security/memory/ai-security-discord-sync.md\"]}"
+      },
+      {
+        "index": 3,
+        "promptHash": "sha256:e256ee8e7aff6957a781d8328f0f68e26996564c81fa458da59fbca2305138ad",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":3,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0,\"outOfRepoFiles\":[\"~/.claude/projects/-home-moji-repos-ai-security/f087dbf0-3210-4978-8a49-a692516cdef2/workflows/scripts/classify-finish.js\"]}"
+      },
+      {
+        "index": 4,
+        "promptHash": "sha256:52e657bd1470bb75a808df9dbe93b8f82606f0b614db4d82e9a09dd291bf3f74",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":4,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 5,
+        "promptHash": "sha256:52e657bd1470bb75a808df9dbe93b8f82606f0b614db4d82e9a09dd291bf3f74",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":5,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 6,
+        "promptHash": "sha256:9a6154fa02c828c25ad285b2bdb347843e04f1d974236cdc9774f6404c6811aa",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":6,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 7,
+        "promptHash": "sha256:2ed774744966fb06290d39d2ed66c90131e221990a5089ae6ac6eb19148b0b9b",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":7,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 8,
+        "promptHash": "sha256:e216ca3bfe874a54c6381a04942f43271495a34105d79b4aa501fe11954def63",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":8,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 9,
+        "promptHash": "sha256:37d4914cfb8332f8a090313339124bbfd621b451d9782d89a4b384b502ba705e",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":9,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 10,
+        "promptHash": "sha256:9de92b1e93086454e1d1e488f35b8caee5306b332218ca23ea2006cf053c1dfa",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":10,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 11,
+        "promptHash": "sha256:666bc8ef9c42e559e4d9df0b6d6a966a3e12ab91bcf9ec0e60bcb1e7355917cc",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":11,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 12,
+        "promptHash": "sha256:680a4e1ea3168c1f4621684743a4850ba51398de5aed52c2c4ac308f056c6062",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":12,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 13,
+        "promptHash": "sha256:6faa6520c10960068495340e6566a1a9de111650456ffc2bde6a94df9e41928f",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":13,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 14,
+        "promptHash": "sha256:100fdd2e8c3da7f7e541fe582b8c257f92766f500866a4676251798fb67ffae3",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":14,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 15,
+        "promptHash": "sha256:bd4bb9d671b781f30f2d781cf84c9e0d303200e19d207e98cc65d4da74d178cf",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":15,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 16,
+        "promptHash": "sha256:20fbd7e2cf40c124e50bd66a8452fedcf560e5950d13218d529878a452cc93d8",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":16,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 17,
+        "promptHash": "sha256:84a883a1d44dc12da64b3a0d3b12c2f5a0dee09a5d16e48349769a4a905dc6b9",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":17,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 18,
+        "promptHash": "sha256:ad106449d32172b7879d19b4ef956db75e6194f6136bed9f4718d3bf3ff8ce69",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":18,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 19,
+        "promptHash": "sha256:307f73ef1848447a69e58a438c6bf20ea779e4a5edba3977ffdc641eb7d84880",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":19,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 20,
+        "promptHash": "sha256:8eb33930f95581a046a2a54b858d15e5c10d71d57936b6feb6c419f67aa2437f",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":20,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 21,
+        "promptHash": "sha256:a57065d347ea593119aea14a8d282b2623f3ac50404f61218efff9ecad75aed4",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":21,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 22,
+        "promptHash": "sha256:63c38a9be10f68174d0b611f34854207eae13c07ad1a990301fa33af483f45b5",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":22,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 23,
+        "promptHash": "sha256:367387ce1205579205703c9e091bfb7dfe12ac3151b713f1a928cdf0603db186",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":23,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 24,
+        "promptHash": "sha256:5b0f8fd2acb0a67723ab8fde066254e0ddb2726866c892ab8a2304d814965c3d",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":24,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 25,
+        "promptHash": "sha256:6244f5bf13aa42b363f01d3b39d5166c83c081ec6821ad59ebc06fe47a6fd4bf",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":25,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 26,
+        "promptHash": "sha256:46aa7a1992bec6ba1f5f6380078042a1dee07af69c0a7988638a7a32f6514a13",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":26,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 27,
+        "promptHash": "sha256:46aa7a1992bec6ba1f5f6380078042a1dee07af69c0a7988638a7a32f6514a13",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":27,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 28,
+        "promptHash": "sha256:d4019803142c1ae4102377ef11c925440b630136e914262a6c9ae62542553685",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":28,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 29,
+        "promptHash": "sha256:d196a8e92a6e4f723365af232a19b687d9eca713324ad0962f53add849387bce",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":29,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 30,
+        "promptHash": "sha256:aa6ab3849a194e721443f76ad87c84a1a2fa48e7f8c943fa0b48679337ab8127",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":30,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 31,
+        "promptHash": "sha256:10a0ca8fdea56cbf954638368b51c44c833e63ad53635b89ce89aa1ab52af821",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":31,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 32,
+        "promptHash": "sha256:a184ea8b8e04a74c2d039a5c6fac92b83730d5be17094769dfad2dfa3d023b32",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":32,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 33,
+        "promptHash": "sha256:8d73348f0457137a5235094507de0a16350dff95a360d9b1c0afe458725931a3",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":33,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 34,
+        "promptHash": "sha256:8c1cbd9d1d95c670caad80366556df58e42cbe4d1cc3f5999f949b74ef8c1079",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":34,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 35,
+        "promptHash": "sha256:2cae583aa0b050481cd46a133ae4f7a61c2f04082cbc9f17af25f21ad2078feb",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":35,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 36,
+        "promptHash": "sha256:7ecd51e3fc2a163e66ae6967c2a43757a059a98b24ed3fd74df78f5db68691b8",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":36,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[],\"commits\":[],\"droppedFailedEdits\":0}"
+      },
+      {
+        "index": 37,
+        "promptHash": "sha256:acc5747554b5889da1eb72301ecaf9a912dc3bc67cf7630897c4f85398f6cb1b",
+        "agent": "claude-code",
+        "model": "claude-fable-5-1",
+        "editsJson": "{\"promptIndex\":37,\"promptText\":\"\",\"agent\":\"claude\",\"edits\":[{\"file\":\"scripts/site/embed.js\",\"op\":\"write\",\"newContent\":\"/* embed.js: the corpus inside somebody else's window. With ?embed=acid in the URL (the Internet Explorer window on\\n   itspricedin.lol frames the site this way) the site's own chrome goes, the palette tilts, every internal link keeps\\n   the flag and replaces the page (so the host's Back button stays the host's), off-site links open in a new tab, and\\n   the page talks to its parent: {type:'page', path, title} out, to https://itspricedin.lol only, on load and on every\\n   in-page navigation; {type:'nav', action:'go'|'refresh'} in, from that origin only, and only from the parent window.\\n   It runs synchronously in <head> so the class is on <html> before the first paint; without the flag it does nothing.\\n   Nothing here reads cookies, storage or anything about the visitor: the only thing that leaves is the page's path and title. */\\n(function () {\\n  'use strict';\\n  var FLAG = 'embed', VALUE = 'acid', HOST = 'https://itspricedin.lol';\\n  var q;\\n  try { q = new URLSearchParams(location.search); } catch (e) { return; }\\n  if (q.get(FLAG) !== VALUE) return;\\n  var html = document.documentElement;\\n  html.classList.add('embed');\\n  var root;   // this site's root path on the origin (data-root is the page's relative prefix to it): nav stays inside it\\n  try { root = new URL(html.getAttribute('data-root') || './', location.href).pathname; } catch (e) { root = '/'; }\\n  function flagged(href) { var u = new URL(href, location.href); u.searchParams.set(FLAG, VALUE); return u.href; }\\n  function path() { return location.pathname + location.hash; }\\n  function announce() {\\n    if (!window.parent || window.parent === window) return;\\n    window.parent.postMessage({ type: 'page', path: path(), title: document.title }, HOST);\\n  }\\n  document.addEventListener('click', function (e) {\\n    if (e.defaultPrevented || e.button !== 0) return;\\n    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;\\n    if (!a) return;\\n    var u;\\n    try { u = new URL(a.href, location.href); } catch (err) { return; }\\n    if (!/^https?:$/.test(u.protocol)) return;\\n    if (u.origin !== location.origin) { a.target = '_blank'; a.rel = 'noopener'; return; }   // github.com and every other site: a new tab, never this frame\\n    if (u.pathname === location.pathname && u.search === location.search && u.hash) return;   // an in-page anchor: hashchange announces it\\n    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) { a.href = flagged(u.href); return; }   // a new tab keeps the flag too\\n    e.preventDefault();\\n    location.replace(flagged(u.href));\\n  });\\n  document.addEventListener('submit', function (e) {   // the search form is a GET to the index: it keeps the flag\\n    var f = e.target;\\n    if (!f || f.tagName !== 'FORM' || (f.getAttribute('method') || 'get').toLowerCase() !== 'get' || f.querySelector('input[name=\\\"' + FLAG + '\\\"]')) return;\\n    var i = document.createElement('input');\\n    i.type = 'hidden'; i.name = FLAG; i.value = VALUE;\\n    f.appendChild(i);\\n  });\\n  window.addEventListener('message', function (e) {\\n    if (e.origin !== HOST || e.source !== window.parent) return;\\n    var m = e.data;\\n    if (!m || typeof m !== 'object' || m.type !== 'nav') return;\\n    if (m.action === 'refresh') { location.reload(); return; }\\n    if (m.action !== 'go' || typeof m.path !== 'string' || m.path.charAt(0) !== '/' || m.path.charAt(1) === '/') return;\\n    var u;\\n    try { u = new URL(m.path, location.origin); } catch (err) { return; }\\n    if (u.origin !== location.origin || u.pathname.indexOf(root) !== 0) return;   // only pages of this site\\n    location.replace(flagged(u.href));\\n  });\\n  window.addEventListener('hashchange', announce);\\n  var push = history.pushState;   // the site has no router today; if one arrives, the address bar outside stays honest\\n  history.pushState = function () { var r = push.apply(this, arguments); announce(); return r; };\\n  if (document.title) announce(); else document.addEventListener('DOMContentLoaded', announce);\\n})();\\n\",\"source\":\"tool_call\",\"evidence\":\"tool_call\",\"oldStart\":1,\"newStart\":1},{\"file\":\"scripts/build-site.py\",\"op\":\"write\",\"oldContent\":\"#!/usr/bin/env python3\\n\\\"\\\"\\\"Build the static site for GitHub Pages into _site/.\\n\\nReuses the corpus parser from stats.py so the site, the README and the vault\\nalways count the same links. Also publishes the corpus as data: _site/intel.json\\n(every link with its category, section and the date it was added) and\\n_site/intel-meta.json (count, HEAD commit and its date).\\n\\nUsage: python3 scripts/build-site.py [--data-only]\\n\\\"\\\"\\\"\\nimport html\\nimport json\\nimport re\\nimport shutil\\nimport subprocess\\nimport sys\\nfrom pathlib import Path\\n\\nsys.path.insert(0, str(Path(__file__).resolve().parent))\\nimport stats  # noqa: E402\\n\\nROOT = stats.ROOT\\nOUT = ROOT / \\\"_site\\\"\\nSITE_URL = \\\"https://anthonyherman.github.io/ai-security-corpus\\\"\\nREPO_URL = \\\"https://github.com/AnthonyHerman/ai-security-corpus\\\"\\n\\n\\ndef slug(s):\\n    return re.sub(r\\\"[^a-z0-9]+\\\", \\\"-\\\", s.lower()).strip(\\\"-\\\")\\n\\n\\ndef unescape_md(s):\\n    \\\"\\\"\\\"Drop markdown backslash escapes ('privileged\\\\\\\\.' -> 'privileged.') so titles read as text.\\\"\\\"\\\"\\n    return re.sub(r\\\"\\\\\\\\([\\\\\\\\`*_{}\\\\[\\\\]()#+\\\\-.!|<>~])\\\", r\\\"\\\\1\\\", s)\\n\\n\\ndef cap_desc(lead, names, cap=155):\\n    \\\"\\\"\\\"'lead: a, b, c and more' kept under cap characters; every name if they fit.\\\"\\\"\\\"\\n    out = lead\\n    for i, n in enumerate(names):\\n        sep = \\\": \\\" if i == 0 else \\\", \\\"\\n        if len(out) + len(sep) + len(n) + len(\\\" and more\\\") > cap:\\n            return out + (\\\" and more.\\\" if i else \\\".\\\")\\n        out += sep + n\\n    return out + \\\".\\\"\\n\\n\\ndef last_change(path):\\n    \\\"\\\"\\\"Date of the last commit touching path, for sitemap lastmod.\\\"\\\"\\\"\\n    return subprocess.run([\\\"git\\\", \\\"log\\\", \\\"-1\\\", \\\"--format=%cs\\\", \\\"--\\\", path],\\n                          cwd=ROOT, capture_output=True, text=True).stdout.strip()\\n\\n\\ndef load_corpus():\\n    \\\"\\\"\\\"Full corpus as plain dicts: groups -> categories -> sections -> links.\\\"\\\"\\\"\\n    readme = stats.README.read_text()\\n    toc = stats.parse_toc(readme)\\n    groups, seen = [], set()\\n    for gname, items in toc:\\n        color, emoji = stats.GROUPS[gname]\\n        g = {\\\"name\\\": gname, \\\"slug\\\": slug(gname), \\\"color\\\": color, \\\"emoji\\\": emoji, \\\"categories\\\": []}\\n        for cat, path, desc in items:\\n            c = {\\\"name\\\": cat, \\\"label\\\": sentence(cat), \\\"slug\\\": slug(cat), \\\"path\\\": path, \\\"desc\\\": desc, \\\"sections\\\": []}\\n            cur, on_page = None, set()\\n            for line in (ROOT / path).read_text().split(\\\"\\\\n\\\"):\\n                if line.startswith(\\\"## \\\"):\\n                    cur = {\\\"name\\\": line[3:].strip(), \\\"label\\\": sentence(line[3:].strip()), \\\"slug\\\": slug(line[3:]), \\\"links\\\": []}\\n                    c[\\\"sections\\\"].append(cur)\\n                    continue\\n                m = stats.LINK.match(line)\\n                if m and cur is not None:\\n                    title, url = unescape_md(m.group(1).strip()), m.group(2)\\n                    # a URL listed twice on one page is a slip, not a cross-reference: keep the first row\\n                    if url in on_page:\\n                        continue\\n                    on_page.add(url)\\n                    domain = re.sub(r\\\"^https?://(www\\\\.)?\\\", \\\"\\\", url).split(\\\"/\\\")[0].lower()\\n                    cur[\\\"links\\\"].append({\\\"t\\\": title, \\\"u\\\": url, \\\"d\\\": domain})\\n                    seen.add(url)\\n            c[\\\"sections\\\"] = [s for s in c[\\\"sections\\\"] if s[\\\"links\\\"]]\\n            c[\\\"links\\\"] = sum(len(s[\\\"links\\\"]) for s in c[\\\"sections\\\"])\\n            g[\\\"categories\\\"].append(c)\\n        g[\\\"links\\\"] = sum(c[\\\"links\\\"] for c in g[\\\"categories\\\"])\\n        groups.append(g)\\n    cats = [c for g in groups for c in g[\\\"categories\\\"]]\\n    return {\\n        \\\"site\\\": SITE_URL, \\\"repo\\\": REPO_URL,\\n        \\\"total\\\": len(seen), \\\"categories\\\": len(cats), \\\"sections\\\": sum(len(c[\\\"sections\\\"]) for c in cats),\\n        \\\"sources\\\": dict(stats.sources(stats.scan(toc)[2])),\\n        \\\"growth\\\": stats.growth(), \\\"recent\\\": stats.recent(12),\\n        \\\"updated\\\": stats.updated() if hasattr(stats, \\\"updated\\\") else None,\\n        \\\"groups\\\": groups,\\n    }\\n\\n\\n# ---------------------------------------------------------------- intel feed\\ndef first_added():\\n    \\\"\\\"\\\"URL -> YYYY-MM-DD (author date) of the commit that first added a line carrying that URL to any\\n    category file, in whatever form it had then (a '- [title](url)' row, a table cell, a bare URL: the\\n    same notion as the growth chart). One git call over the whole history, so it costs the same for 5\\n    links or 50,000, and a link that moved between files or had its title fixed keeps its first date.\\\"\\\"\\\"\\n    out = subprocess.run([\\\"git\\\", \\\"log\\\", \\\"--reverse\\\", \\\"--format=%x00%as\\\", \\\"-p\\\", \\\"--no-renames\\\", \\\"--\\\", \\\"*.md\\\",\\n                          \\\":(exclude)vault\\\", \\\":(exclude).claude\\\"],\\n                         cwd=ROOT, capture_output=True, text=True).stdout\\n    dates, date = {}, \\\"\\\"\\n    for line in out.split(\\\"\\\\n\\\"):\\n        if line.startswith(\\\"\\\\x00\\\"):\\n            date = line[1:].strip()\\n        elif line.startswith(\\\"+\\\") and not line.startswith(\\\"+++ \\\"):\\n            for url in stats.URL.findall(line):\\n                dates.setdefault(url, date)\\n    return dates\\n\\n\\ndef first_commit(path, _cache={}):\\n    \\\"\\\"\\\"Date of the first commit touching path: the fallback for a line git has not seen added\\n    (an uncommitted edit, a link that only ever lived in a table).\\\"\\\"\\\"\\n    if path not in _cache:\\n        log = subprocess.run([\\\"git\\\", \\\"log\\\", \\\"--reverse\\\", \\\"--format=%as\\\", \\\"--\\\", path],\\n                             cwd=ROOT, capture_output=True, text=True).stdout.split(\\\"\\\\n\\\")\\n        _cache[path] = next((d.strip() for d in log if d.strip()), \\\"\\\")\\n    return _cache[path]\\n\\n\\ndef load_intel(toc):\\n    \\\"\\\"\\\"Every link as a flat row for machine consumers, shaped like itspricedin's pull-intel.py output\\n    plus `added`: the TOC category name, the '## ' section it sits under ('' above the first heading),\\n    the title as written (160 chars max), and the first URL occurrence corpus-wide wins.\\\"\\\"\\\"\\n    added = first_added()\\n    items, seen = [], set()\\n    for _, cats in toc:\\n        for cat, path, _ in cats:\\n            section = \\\"\\\"\\n            for line in (ROOT / path).read_text(encoding=\\\"utf-8\\\").split(\\\"\\\\n\\\"):\\n                if line.startswith(\\\"## \\\"):\\n                    section = line[3:].strip()\\n                    continue\\n                m = stats.LINK.match(line)\\n                if not m or m.group(2) in seen:\\n                    continue\\n                url = m.group(2)\\n                seen.add(url)\\n                items.append({\\\"title\\\": m.group(1).strip()[:160], \\\"url\\\": url, \\\"category\\\": cat,\\n                              \\\"section\\\": section, \\\"added\\\": added.get(url) or first_commit(path)})\\n    return items\\n\\n\\ndef intel_meta(items):\\n    \\\"\\\"\\\"{count, generated_at, commit} from HEAD, so two builds of the same commit are byte-identical.\\\"\\\"\\\"\\n    head = subprocess.run([\\\"git\\\", \\\"log\\\", \\\"-1\\\", \\\"--format=%H %cI\\\"], cwd=ROOT,\\n                          capture_output=True, text=True).stdout.split()\\n    sha, when = (head + [\\\"\\\", \\\"\\\"])[:2]\\n    return {\\\"count\\\": len(items), \\\"generated_at\\\": when, \\\"commit\\\": sha}\\n\\n\\nDATE = re.compile(r\\\"^\\\\d{4}-\\\\d{2}-\\\\d{2}$\\\")\\n\\n\\ndef check_intel(items, meta):\\n    \\\"\\\"\\\"Fail the build rather than publish a feed a consumer cannot trust: every row has the five\\n    string fields, a real http(s) URL, a date, no URL twice, and the meta matches the rows.\\\"\\\"\\\"\\n    seen = set()\\n    for i, row in enumerate(items):\\n        if set(row) != {\\\"title\\\", \\\"url\\\", \\\"category\\\", \\\"section\\\", \\\"added\\\"} or not all(isinstance(v, str) for v in row.values()):\\n            raise ValueError(\\\"intel row %d has the wrong shape: %r\\\" % (i, row))\\n        if not row[\\\"title\\\"] or not row[\\\"category\\\"]:\\n            raise ValueError(\\\"intel row %d has an empty title or category: %r\\\" % (i, row))\\n        if not re.match(r\\\"^https?://\\\\S+$\\\", row[\\\"url\\\"]) or row[\\\"url\\\"] in seen:\\n            raise ValueError(\\\"intel row %d has a bad or repeated url: %r\\\" % (i, row[\\\"url\\\"]))\\n        if not DATE.match(row[\\\"added\\\"]):\\n            raise ValueError(\\\"intel row %d has a bad added date: %r\\\" % (i, row[\\\"added\\\"]))\\n        seen.add(row[\\\"url\\\"])\\n    if set(meta) != {\\\"count\\\", \\\"generated_at\\\", \\\"commit\\\"} or meta[\\\"count\\\"] != len(items):\\n        raise ValueError(\\\"intel meta does not describe the rows: %r\\\" % meta)\\n    if not re.match(r\\\"^[0-9a-f]{40}$\\\", meta[\\\"commit\\\"]) or not re.match(r\\\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\", meta[\\\"generated_at\\\"]):\\n        raise ValueError(\\\"intel meta needs a full commit sha and an ISO timestamp: %r\\\" % meta)\\n\\n\\ndef write_intel():\\n    toc = stats.parse_toc(stats.README.read_text(encoding=\\\"utf-8\\\"))\\n    items = load_intel(toc)\\n    meta = intel_meta(items)\\n    check_intel(items, meta)\\n    OUT.mkdir(parents=True, exist_ok=True)\\n    (OUT / \\\"intel.json\\\").write_text(json.dumps(items, ensure_ascii=False, separators=(\\\",\\\", \\\":\\\")), encoding=\\\"utf-8\\\")\\n    (OUT / \\\"intel-meta.json\\\").write_text(json.dumps(meta, separators=(\\\",\\\", \\\":\\\")), encoding=\\\"utf-8\\\")\\n    return items, meta\\n\\n\\n# ---------------------------------------------------------------- render\\nSITE_DIR = Path(__file__).resolve().parent / \\\"site\\\"\\nASSETS = ROOT / \\\"assets\\\"\\nFONTS = (\\\"https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700\\\"\\n         \\\"&family=Barlow+Semi+Condensed:wght@400;500&display=swap\\\")\\nTHEME = \\\"#0b0820\\\"\\nSITE_NAME = \\\"AI Security Corpus\\\"\\n\\n# block-letter font (5 rows) for the ANSI hero\\nGLYPHS = {\\n    \\\"A\\\": [\\\".###.\\\", \\\"#...#\\\", \\\"#####\\\", \\\"#...#\\\", \\\"#...#\\\"],\\n    \\\"I\\\": [\\\"###\\\", \\\".#.\\\", \\\".#.\\\", \\\".#.\\\", \\\"###\\\"],\\n    \\\"S\\\": [\\\".####\\\", \\\"#....\\\", \\\".###.\\\", \\\"....#\\\", \\\"####.\\\"],\\n    \\\"E\\\": [\\\"#####\\\", \\\"#....\\\", \\\"####.\\\", \\\"#....\\\", \\\"#####\\\"],\\n    \\\"C\\\": [\\\".####\\\", \\\"#....\\\", \\\"#....\\\", \\\"#....\\\", \\\".####\\\"],\\n    \\\"U\\\": [\\\"#...#\\\", \\\"#...#\\\", \\\"#...#\\\", \\\"#...#\\\", \\\".###.\\\"],\\n    \\\"R\\\": [\\\"####.\\\", \\\"#...#\\\", \\\"####.\\\", \\\"#..#.\\\", \\\"#...#\\\"],\\n    \\\"T\\\": [\\\"#####\\\", \\\"..#..\\\", \\\"..#..\\\", \\\"..#..\\\", \\\"..#..\\\"],\\n    \\\"Y\\\": [\\\"#...#\\\", \\\".#.#.\\\", \\\"..#..\\\", \\\"..#..\\\", \\\"..#..\\\"],\\n    \\\"O\\\": [\\\".###.\\\", \\\"#...#\\\", \\\"#...#\\\", \\\"#...#\\\", \\\".###.\\\"],\\n    \\\"P\\\": [\\\"####.\\\", \\\"#...#\\\", \\\"####.\\\", \\\"#....\\\", \\\"#....\\\"],\\n    \\\"4\\\": [\\\"#..#.\\\", \\\"#..#.\\\", \\\"#####\\\", \\\"...#.\\\", \\\"...#.\\\"],\\n    \\\"0\\\": [\\\".###.\\\", \\\"#..##\\\", \\\"#.#.#\\\", \\\"##..#\\\", \\\".###.\\\"],\\n    \\\" \\\": [\\\"..\\\", \\\"..\\\", \\\"..\\\", \\\"..\\\", \\\"..\\\"],\\n}\\n\\n\\ndef block_rows(word):\\n    rows = [\\\"\\\" for _ in range(5)]\\n    for i, ch in enumerate(word):\\n        g = GLYPHS[ch]\\n        for r in range(5):\\n            rows[r] += g[r] + (\\\".\\\" if i < len(word) - 1 else \\\"\\\")\\n    return rows\\n\\n\\ndef ansi_logo(lines):\\n    \\\"\\\"\\\"Rows of block characters with a ░ drop shadow. Returns (colored_html, plain_text).\\\"\\\"\\\"\\n    grids = []\\n    for word in lines:\\n        rows = block_rows(word)\\n        w = len(rows[0]) + 1\\n        grid = [[\\\" \\\"] * w for _ in range(6)]\\n        for r in range(5):\\n            for c, ch in enumerate(rows[r]):\\n                if ch == \\\"#\\\":\\n                    grid[r][c] = \\\"█\\\"\\n        for r in range(5):\\n            for c in range(w - 1):\\n                if grid[r][c] == \\\"█\\\" and grid[r + 1][c + 1] == \\\" \\\":\\n                    grid[r + 1][c + 1] = \\\"░\\\"\\n        grids.append(grid)\\n    width = max(len(g[0]) for g in grids)\\n    colored, plain = [], []\\n    for gi, grid in enumerate(grids):\\n        for r, row in enumerate(grid):\\n            s = \\\"\\\".join(row).ljust(width)\\n            plain.append(s)\\n            out = \\\"\\\".join('<span class=\\\"sh\\\">%s</span>' % p if p.startswith(\\\"░\\\") else p\\n                          for p in re.split(r\\\"(░+)\\\", s) if p)\\n            colored.append('<span class=\\\"row r%d\\\">%s</span>' % (min(r, 4), out))\\n        if gi < len(grids) - 1:\\n            plain.append(\\\"\\\")\\n            colored.appen\n/* [origin: editsJson truncated for note portability] */"
+      }
+    ],
+    "tokensUsed": 665912,
+    "costUsd": 123.9648,
+    "durationMs": 3285532191,
+    "linesAdded": 150,
+    "linesRemoved": 1,
+    "originUrl": "https://getorigin.io/sessions/80551366-b16d-41f6-9fec-fca8f1ab0f53",
+    "timestamp": "2026-10-11T03:19:21.081Z"
+  },
+  "attribution_record": {
+    "schema_version": "1.0",
+    "revision": {
+      "vcs": "git",
+      "id": "691c1faf7fe9a28159da2262d505f4160eea5a0d"
+    },
+    "attribution_level": "commit",
+    "recorded_at": "2026-10-11T03:19:21.081Z",
+    "producer": {
+      "name": "origin-cli",
+      "version": "0.20261009.2256"
+    },
+    "contributions": [
+      {
+        "evidence": "session_capture",
+        "agent": {
+          "id": "claude-code"
+        },
+        "model": {
+          "id": "claude-fable-5-1"
+        },
+        "session": {
+          "id": "80551366-b16d-41f6-9fec-fca8f1ab0f53",
+          "reference_uri": "https://getorigin.io/sessions/80551366-b16d-41f6-9fec-fca8f1ab0f53",
+          "started_at": "2026-09-03T02:40:23.949Z",
+          "duration_ms": 3285537132,
+          "usage": {
+            "cost": {
+              "amount": "123.9648",
+              "currency": "USD",
+              "basis": "estimated"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
