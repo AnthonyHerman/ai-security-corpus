@@ -816,3 +816,24 @@ html.hid .caret { animation-play-state: paused; }
   .logo-ghost, .logo .row, .prompt .caret, .hero::before { animation: none !important; }
   .logo .row { opacity: 1; }
 }
+
+/* ---------- Embed mode (?embed=acid; embed.js puts the class on <html> before the first paint) ----------
+   Inside itspricedin.lol's Internet Explorer window the chrome belongs to the window: no top bar, no footer, no
+   double rule, no gutter, and a palette tilted toward the host's acid: a hotter ground, magenta for the group colour,
+   the spectrum rule kept as the one line at the top. */
+html.embed .topbar, html.embed .foot, html.embed .skip { display: none; }
+html.embed {
+  --bg: #14052e;
+  --panel: #1c0b3f;
+  --panel-2: #23104d;
+  --line: #3b2a7a;
+  --line-2: #5a3fb0;
+  --text: #f6f1ff;
+  --dim: #bcb2ea;
+  --gc: var(--magenta);
+}
+html.embed body { padding-inline: 0; padding-block: 0 24px; }
+html.embed .frame { max-width: none; border: 0; }
+html.embed .frame::before { background: var(--prism); }
+html.embed .entry { scroll-margin-top: 12px; }
+html.embed .section { scroll-margin-top: 12px; }
