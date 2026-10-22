@@ -9,6 +9,7 @@ General agent frameworks, platforms, and development tools.
 - [Maestro - AI Agent Command Center](https://runmaestro.ai/)
 - [Gas Town - multi-agent workspace manager](https://github.com/steveyegge/gastown)
 - [Agentic Workflows Made Simple](https://github.com/Cyb3rWard0g/floki)
+- [Darkmoon: open source autonomous penetration testing platform where 50 specialist agents coordinate over MCP to drive offensive tools with reproducible proof of exploitation](https://github.com/ASCIT31/Dark-Moon)
 - [SuperAGI - Build, Manage & Run Autonomous AI Agents](https://superagi.com/)
 - [Symphony turns project work into isolated](https://github.com/openai/symphony)
 - [One API call. Full Claude agent. Comp](https://github.com/tomascupr/sandstorm)
