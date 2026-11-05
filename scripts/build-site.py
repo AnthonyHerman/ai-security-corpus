@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the static site for GitHub Pages into _site/.
+"""Build the static site for Cloudflare (Workers static assets, see wrangler.jsonc) into _site/.
 
 Reuses the corpus parser from stats.py so the site, the README and the vault
 always count the same links. Also publishes the corpus as data: _site/intel.json
@@ -21,7 +21,7 @@ import stats  # noqa: E402
 
 ROOT = stats.ROOT
 OUT = ROOT / "_site"
-SITE_URL = "https://anthonyherman.github.io/ai-security-corpus"
+SITE_URL = "https://ai-security-corpus.online"
 REPO_URL = "https://github.com/AnthonyHerman/ai-security-corpus"
 
 
@@ -123,8 +123,7 @@ def first_commit(path, _cache={}):
 
 
 def load_intel(toc):
-    """Every link as a flat row for machine consumers, shaped like itspricedin's pull-intel.py output
-    plus `added`: the TOC category name, the '## ' section it sits under ('' above the first heading),
+    """Every link as a flat row for machine consumers, with the date it was added: the TOC category name, the '## ' section it sits under ('' above the first heading),
     the title as written (160 chars max), and the first URL occurrence corpus-wide wins."""
     added = first_added()
     items, seen = [], set()
@@ -190,69 +189,9 @@ def write_intel():
 # ---------------------------------------------------------------- render
 SITE_DIR = Path(__file__).resolve().parent / "site"
 ASSETS = ROOT / "assets"
-FONTS = ("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700"
-         "&family=Barlow+Semi+Condensed:wght@400;500&display=swap")
-THEME = "#0b0820"
+FONTS = ("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400"
+         "&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap")
 SITE_NAME = "AI Security Corpus"
-
-# block-letter font (5 rows) for the ANSI hero
-GLYPHS = {
-    "A": [".###.", "#...#", "#####", "#...#", "#...#"],
-    "I": ["###", ".#.", ".#.", ".#.", "###"],
-    "S": [".####", "#....", ".###.", "....#", "####."],
-    "E": ["#####", "#....", "####.", "#....", "#####"],
-    "C": [".####", "#....", "#....", "#....", ".####"],
-    "U": ["#...#", "#...#", "#...#", "#...#", ".###."],
-    "R": ["####.", "#...#", "####.", "#..#.", "#...#"],
-    "T": ["#####", "..#..", "..#..", "..#..", "..#.."],
-    "Y": ["#...#", ".#.#.", "..#..", "..#..", "..#.."],
-    "O": [".###.", "#...#", "#...#", "#...#", ".###."],
-    "P": ["####.", "#...#", "####.", "#....", "#...."],
-    "4": ["#..#.", "#..#.", "#####", "...#.", "...#."],
-    "0": [".###.", "#..##", "#.#.#", "##..#", ".###."],
-    " ": ["..", "..", "..", "..", ".."],
-}
-
-
-def block_rows(word):
-    rows = ["" for _ in range(5)]
-    for i, ch in enumerate(word):
-        g = GLYPHS[ch]
-        for r in range(5):
-            rows[r] += g[r] + ("." if i < len(word) - 1 else "")
-    return rows
-
-
-def ansi_logo(lines):
-    """Rows of block characters with a ░ drop shadow. Returns (colored_html, plain_text)."""
-    grids = []
-    for word in lines:
-        rows = block_rows(word)
-        w = len(rows[0]) + 1
-        grid = [[" "] * w for _ in range(6)]
-        for r in range(5):
-            for c, ch in enumerate(rows[r]):
-                if ch == "#":
-                    grid[r][c] = "█"
-        for r in range(5):
-            for c in range(w - 1):
-                if grid[r][c] == "█" and grid[r + 1][c + 1] == " ":
-                    grid[r + 1][c + 1] = "░"
-        grids.append(grid)
-    width = max(len(g[0]) for g in grids)
-    colored, plain = [], []
-    for gi, grid in enumerate(grids):
-        for r, row in enumerate(grid):
-            s = "".join(row).ljust(width)
-            plain.append(s)
-            out = "".join('<span class="sh">%s</span>' % p if p.startswith("░") else p
-                          for p in re.split(r"(░+)", s) if p)
-            colored.append('<span class="row r%d">%s</span>' % (min(r, 4), out))
-        if gi < len(grids) - 1:
-            plain.append("")
-            colored.append('<span class="row"> </span>')
-    return "\n".join(colored), "\n".join(plain)
-
 
 def esc(s):
     return html.escape(str(s or ""), quote=True)
@@ -276,18 +215,19 @@ def sentence(s):
     return " ".join(out)
 
 
-def block_bar(value, vmax, width=36):
-    """A ░▒▓█ bar: full cells in group color, a fading tail, dim ░ for the rest."""
-    frac = value / vmax * width
-    full = int(frac)
-    rem = frac - full
-    tail = "▓" if rem > 0.66 else ("▒" if rem > 0.33 else "░" if rem > 0 else "")
-    rest = "░" * max(0, width - full - (1 if tail else 0))
-    return '<span class="fill">%s%s</span><span class="rest">%s</span>' % ("█" * full, tail, rest)
+def block_bar(value, vmax):
+    """A thin proportional bar in the group colour."""
+    return '<span class="fill" style="width:%.1f%%"></span>' % (100 * value / vmax)
 
 
-CHART_COLORS = {"#161b22": "#1a1442", "#21262d": "#2b2360", "#30363d": "#3a2f80",
-                "#e6edf3": "#ece8ff", "#8b949e": "#a39cd4", "#c9d1d9": "#ece8ff", "#6e7681": "#8a83b8"}
+CHART_COLORS = {
+    "#161b22": "var(--chart-panel)", "#21262d": "var(--line)", "#30363d": "var(--line-2)",
+    "#e6edf3": "var(--text)", "#8b949e": "var(--dim)", "#c9d1d9": "var(--text)", "#6e7681": "var(--mute)",
+    "#0b0e14": "var(--panel)",
+    "#7c83ff": "var(--c-foundations)", "#ff3b6b": "var(--c-attacks)", "#2ee38a": "var(--c-defense)",
+    "#00d4ff": "var(--c-agents)", "#ffb020": "var(--c-coding)", "#c77dff": "var(--c-research)",
+    "#ff7a45": "var(--c-practice)", "#9aa4b2": "var(--c-general)",
+}
 
 
 def svg_inline(name, title):
@@ -307,9 +247,9 @@ def svg_categories(d):
 def reskin_svg(s, title):
     s = re.sub(r'<rect width="\d+" height="\d+" rx="12" fill="#0b0e14"/>', "", s, count=1)
     for a, b in CHART_COLORS.items():
-        s = s.replace(a, b)
+        s = s.replace('="%s"' % a, '="%s"' % b)
     s = re.sub(r'font-family="[^"]*monospace"', 'font-family="JetBrains Mono, ui-monospace, monospace"', s)
-    s = re.sub(r'font-family="-apple-system[^"]*"', 'font-family="Barlow Semi Condensed, system-ui, sans-serif"', s)
+    s = re.sub(r'font-family="-apple-system[^"]*"', 'font-family="Inter, system-ui, sans-serif"', s)
     s = re.sub(r'(font-weight="700" fill="#[0-9a-f]{6}">)([A-Z][A-Z ]+)(</text>)',
                lambda m: m.group(1) + m.group(2).capitalize() + m.group(3), s)
     s = s.replace("<svg ", '<svg role="img" aria-label="%s" ' % esc(title), 1)
@@ -339,8 +279,9 @@ def head_html(d, title, desc, prefix, url, jsonld, noindex=False):
 <title>%s</title>
 <meta name="description" content="%s">
 %s
-<meta name="theme-color" content="%s">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14130f" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="%s">
 <meta property="og:title" content="%s">
@@ -354,7 +295,6 @@ def head_html(d, title, desc, prefix, url, jsonld, noindex=False):
 <meta name="twitter:image" content="%s">
 <link rel="icon" href="%sassets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="%sstyle.css">
-<script src="%sembed.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="%s" onload="this.onload=null;this.rel='stylesheet'">
@@ -363,17 +303,16 @@ def head_html(d, title, desc, prefix, url, jsonld, noindex=False):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-""" % (prefix, esc(title), esc(desc), canon, THEME, SITE_NAME, esc(title), esc(desc), esc(og),
-       esc(title), esc(desc), esc(og), prefix, prefix, prefix, esc(FONTS), esc(FONTS), json.dumps(jsonld, separators=(",", ":")))
+""" % (prefix, esc(title), esc(desc), canon, SITE_NAME, esc(title), esc(desc), esc(og),
+       esc(title), esc(desc), esc(og), prefix, prefix, esc(FONTS), esc(FONTS), json.dumps(jsonld, separators=(",", ":")))
 
 
 def search_html(d, prefix, label=None):
-    label = label or "search %s links" % fmt(d["total"])
+    label = label or "Search %s links" % fmt(d["total"])
     return """<div class="search">
   <form class="prompt" role="search" action="%s" method="get">
-    <label class="ps1" for="q" aria-hidden="true">&gt;</label>
+    <label class="ps1" for="q" aria-hidden="true"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg></label>
     <input id="q" name="q" type="search" placeholder="%s" autocomplete="off" spellcheck="false" aria-controls="results" aria-label="Search the corpus by title or domain" aria-describedby="q-hint">
-    <span class="caret" aria-hidden="true"></span>
     <kbd class="key" aria-hidden="true">/</kbd>
   </form>
   <span id="q-hint" class="visually-hidden">Results appear below as you type. Tab or the arrow keys move through them, Enter opens one, Escape closes the list.</span>
@@ -384,21 +323,21 @@ def search_html(d, prefix, label=None):
 
 
 def root_crumb(prefix):
-    return '<a href="%s" aria-label="Home"><span class="full">~/ai-security-corpus</span><span class="short" aria-hidden="true">~</span></a>' % (prefix or "./")
+    return '<a href="%s" aria-label="Home"><span class="full">AI Security Corpus</span><span class="short" aria-hidden="true">Corpus</span></a>' % (prefix or "./")
 
 
 def topbar(d, prefix, crumbs, search=False, node=None, find=False):
-    """BBS status line. `node` is 'n/29' on category pages (a position cue); `find` adds a link that
+    """Sticky top bar. `node` is 'n of 29' on category pages (a position cue); `find` adds a link that
     focuses the hero prompt on the index, whose only search field lives in the hero."""
     crumb_html = ' <span class="sep">/</span> '.join(crumbs)
-    mid = ('\n  <div class="search-slot">%s</div>' % search_html(d, prefix, "search")) if search else ""
-    node_html = ('  <span class="node">node %s</span>\n' % esc(node)) if node else ""
-    find_html = ('\n    <a class="find" href="#q"><kbd aria-hidden="true">/</kbd> search</a>') if find else ""
+    mid = ('\n  <div class="search-slot">%s</div>' % search_html(d, prefix, "Search")) if search else ""
+    node_html = ('  <span class="node">%s</span>\n' % esc(node)) if node else ""
+    find_html = ('\n    <a class="find" href="#q"><kbd aria-hidden="true">/</kbd> Search</a>') if find else ""
     return """<header class="topbar sticky">
 %s  <nav class="path" aria-label="Breadcrumb">%s</nav>%s
   <span class="right">
     <span class="count">%s links</span>%s
-    <a class="star" href="%s">star<span class="full"> on GitHub</span></a>
+    <a class="star" href="%s">GitHub</a>
   </span>
 </header>
 """ % (node_html, crumb_html, mid, fmt(d["total"]), find_html, esc(d["repo"]))
@@ -407,20 +346,18 @@ def topbar(d, prefix, crumbs, search=False, node=None, find=False):
 def sec_heading(title, count=None, tag="h2", hid=None):
     c = ' <span class="count">%s</span>' % esc(count) if count else ""
     i = ' id="%s"' % hid if hid else ""
-    return '<%s class="sec-h"%s><span class="t"><span class="glyph" aria-hidden="true">╔═</span>%s%s</span><span class="rule" aria-hidden="true"></span></%s>' % (
+    return '<%s class="sec-h"%s><span class="t">%s%s</span><span class="rule" aria-hidden="true"></span></%s>' % (
         tag, i, esc(title), c, tag)
 
 
 def footer(d, hotkeys=False):
     hk = ('\n  <span><button type="button" class="hk" aria-pressed="true">hotkeys on</button></span>' if hotkeys else "")
     return """<footer class="foot">
-  <span class="blocks" aria-hidden="true">▓▒░</span>
   <span><a href="%s">Source on GitHub</a></span>
   <span>Added, not endorsed</span>
   <span><a href="%s/blob/main/LICENSE" rel="license">CC BY 4.0</a></span>
   <span>Updated %s</span>%s
   <span class="end"><a href="%s/issues">Something missing or wrong? Open an issue</a></span>
-  <span class="blocks" aria-hidden="true">░▒▓</span>
 </footer>
 """ % (esc(d["repo"]), esc(d["repo"]), esc(d["updated"]), hk, esc(d["repo"]))
 
@@ -450,16 +387,15 @@ def kv(rows):
 
 
 def render_index(d):
-    logo_html, logo_plain = ansi_logo(["AI SECURITY", "CORPUS"])
     src = d["sources"]
-    sysop = """<aside class="sysop" aria-label="Status">
-  <p class="sysop-h"><span aria-hidden="true">╔═ </span>sysop</p>
+    sysop = """<aside class="sysop" aria-label="Overview">
+  <p class="sysop-h">Overview</p>
   %s
-  <p class="sysop-h"><span aria-hidden="true">╠═ </span>top domains</p>
+  <p class="sysop-h">Top domains</p>
   %s
-  <p class="sysop-h"><span aria-hidden="true">╚═ </span>keys</p>
+  <p class="sysop-h">Keyboard</p>
   %s
-</aside>""" % (kv([("updated", esc(d["updated"])), ("categories", d["categories"]), ("sections", d["sections"])]),
+</aside>""" % (kv([("Updated", esc(d["updated"])), ("Categories", d["categories"]), ("Sections", d["sections"])]),
                kv([(esc(k), fmt(v)) for k, v in top_domains(d)]),
                kv([("<kbd>1</kbd> to <kbd>8</kbd>", "jump to group"), ("<kbd>/</kbd>", "search")]))
     vmax = max(g["links"] for g in d["groups"])
@@ -475,18 +411,14 @@ def render_index(d):
     out.append(topbar(d, "", [root_crumb("")], find=True))
     out.append("""<main id="main">
 <section class="hero" aria-labelledby="site-title">
-  <h1 class="logo-wrap" id="site-title">
-    <pre class="logo-ghost m" aria-hidden="true">%s</pre>
-    <pre class="logo-ghost c" aria-hidden="true">%s</pre>
-    <pre class="logo" role="img" aria-label="AI Security Corpus">%s</pre>
-  </h1>
-  <p class="tagline"><b>One person's reading list that got out of hand.</b><br>
-  <span class="y">No gatekeeping.</span> <span class="c">Added, not endorsed.</span>
-  <span class="m">%s links</span> across %d categories and %d sections, sorted by what they are about.</p>
+  <p class="eyebrow">A personal reading list on AI security</p>
+  <h1 id="site-title">AI Security <em>Corpus</em></h1>
+  <p class="tagline"><b>One person's reading list that got out of hand.</b>
+  No gatekeeping, added and not endorsed: %s links across %d categories and %d sections, sorted by what they are about.</p>
   %s
   %s
 </section>
-""" % (esc(logo_plain), esc(logo_plain), logo_html, fmt(d["total"]), d["categories"], d["sections"], search_html(d, ""), sysop))
+""" % (fmt(d["total"]), d["categories"], d["sections"], search_html(d, ""), sysop))
 
     out.append("""<ul class="stats" aria-label="Corpus size">
   <li class="a"><span class="n">%s</span><span class="l">links</span></li>
@@ -500,7 +432,7 @@ def render_index(d):
        fmt(src.get("X / Twitter", 0))))
 
     out.append('<section class="sec" id="menu" aria-labelledby="menu-h">')
-    out.append(sec_heading("Main menu", "keys 1 to 8 jump", hid="menu-h"))
+    out.append(sec_heading("Browse", "keys 1 to 8 jump to a group", hid="menu-h"))
     out.append('<ol class="menu">')
     for i, g in enumerate(d["groups"], 1):
         out.append('<li class="entry" id="%s" data-hotkey="%d" style="%s">' % (g["slug"], i, gvar(g["slug"])))
@@ -576,13 +508,13 @@ def cat_side(d, cat, prefix, prev_c, next_c):
     hosts = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:4]
     (pg, pc), (ng, nc) = prev_c, next_c
     return """<aside class="cat-side" aria-label="Category readout">
-  <p class="sysop-h"><span aria-hidden="true">╔═ </span>top hosts</p>
+  <p class="sysop-h">Top hosts</p>
   %s
-  <p class="sysop-h"><span aria-hidden="true">╚═ </span>nearby</p>
+  <p class="sysop-h">Nearby</p>
   %s
 </aside>""" % (kv([(esc(k), fmt(v)) for k, v in hosts]),
-               kv([("prev", '<a href="%s%s">%s</a>' % (prefix, cat_dir(pg, pc), esc(sentence(pc["name"])))),
-                   ("next", '<a href="%s%s">%s</a>' % (prefix, cat_dir(ng, nc), esc(sentence(nc["name"]))))]))
+               kv([("Previous", '<a href="%s%s">%s</a>' % (prefix, cat_dir(pg, pc), esc(sentence(pc["name"])))),
+                   ("Next", '<a href="%s%s">%s</a>' % (prefix, cat_dir(ng, nc), esc(sentence(nc["name"]))))]))
 
 
 def render_category(d, group, cat, prev_c, next_c, node=None):
@@ -608,15 +540,15 @@ def render_category(d, group, cat, prev_c, next_c, node=None):
     edit = "%s/blob/main/%s" % (d["repo"], cat["path"])
     out.append("""<main id="main">
 <section class="cat-hero">
-  <p class="group"><span aria-hidden="true">╔═ </span><a href="%s#%s">%s</a></p>
+  <p class="group"><a href="%s#%s">%s</a></p>
   <h1>%s</h1>
   <p class="desc">%s</p>
-  <div class="meta"><span><b>%s</b> links</span><span><b>%d</b> section%s</span><span>added, not endorsed</span><span><a href="%s">Edit this list on GitHub</a></span></div>
+  <div class="meta"><span><b>%s</b> links</span><span><b>%d</b> section%s</span><span>Added, not endorsed</span><span><a href="%s">Edit this list on GitHub</a></span></div>
   %s
 </section>
 <div class="cat-body">
 <nav class="rail" aria-label="Sections">
-  <p class="rail-h">sections</p>
+  <p class="rail-h">Sections</p>
   <ol>""" % (prefix, group["slug"], esc(group["name"]), esc(name), esc(cat["desc"]), fmt(cat["links"]), len(cat["sections"]),
             "" if len(cat["sections"]) == 1 else "s", esc(edit), cat_side(d, cat, prefix, prev_c, next_c)))
     for s in cat["sections"]:
@@ -642,7 +574,7 @@ def render_category(d, group, cat, prev_c, next_c, node=None):
 
 
 def render_404(d):
-    # GitHub Pages serves 404.html for any missing path at any depth, so its assets must be absolute
+    # Cloudflare serves 404.html (not_found_handling in wrangler.jsonc) for any missing path at any depth, so its assets must be absolute
     # (SITE_URL). It therefore renders unstyled from a local file or another origin; change SITE_URL
     # in one place for a custom domain.
     prefix = d["site"] + "/"
@@ -651,24 +583,18 @@ def render_404(d):
     out.append('<div class="frame">')
     out.append(topbar(d, prefix, [root_crumb(prefix), '<span aria-current="page">404</span>'], search=True))
     out.append("""<main id="main" class="lost">
-  <h1>No such file</h1>
+  <h1>Page not found</h1>
   <p>That path is not in the corpus. Category pages moved around as the list grew, so an old link may point somewhere that no longer exists.</p>
-  <p><a href="%s">Back to the main menu</a>, or type <kbd>/</kbd> and search the %s links.</p>
+  <p><a href="%s">Back to the front page</a>, or type <kbd>/</kbd> to search the %s links.</p>
 </main>""" % (prefix, fmt(d["total"])))
     out.append(footer(d))
     out.append('</div>\n<script src="%sscript.js" defer></script>\n</body>\n</html>\n' % prefix)
     return "\n".join(out)
 
 
-FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#0b0820"/>
-<rect x="4" y="6" width="4" height="4" fill="#e8ff3d"/><rect x="8" y="6" width="4" height="4" fill="#e8ff3d"/><rect x="12" y="6" width="4" height="4" fill="#e8ff3d"/>
-<rect x="4" y="10" width="4" height="4" fill="#9bff6a"/><rect x="12" y="10" width="4" height="4" fill="#9bff6a"/>
-<rect x="4" y="14" width="4" height="4" fill="#2ae8ff"/><rect x="8" y="14" width="4" height="4" fill="#2ae8ff"/><rect x="12" y="14" width="4" height="4" fill="#2ae8ff"/>
-<rect x="4" y="18" width="4" height="4" fill="#9d8cff"/><rect x="12" y="18" width="4" height="4" fill="#9d8cff"/>
-<rect x="4" y="22" width="4" height="4" fill="#ff2fb3"/><rect x="12" y="22" width="4" height="4" fill="#ff2fb3"/>
-<rect x="20" y="6" width="4" height="4" fill="#e8ff3d"/><rect x="24" y="6" width="4" height="4" fill="#e8ff3d"/>
-<rect x="20" y="10" width="4" height="4" fill="#9bff6a"/><rect x="20" y="14" width="4" height="4" fill="#2ae8ff"/>
-<rect x="20" y="18" width="4" height="4" fill="#9d8cff"/><rect x="20" y="22" width="4" height="4" fill="#ff2fb3"/><rect x="24" y="22" width="4" height="4" fill="#ff2fb3"/>
+FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#1b1a17"/>
+<rect x="7" y="9" width="14" height="2.4" rx="1.2" fill="#f6f3ec"/><rect x="7" y="15" width="18" height="2.4" rx="1.2" fill="#f6f3ec"/><rect x="7" y="21" width="11" height="2.4" rx="1.2" fill="#f6f3ec"/>
+<circle cx="24.5" cy="9.2" r="3" fill="#e0502b"/>
 </svg>
 """
 
@@ -687,17 +613,15 @@ def render_site(d):
         prev_c = cats[i - 1]
         next_c = cats[(i + 1) % len(cats)]
         path = cat_dir(g, c)
-        write(OUT / path / "index.html", render_category(d, g, c, prev_c, next_c, "%d/%d" % (i + 1, len(cats))))
+        write(OUT / path / "index.html", render_category(d, g, c, prev_c, next_c, "%d of %d" % (i + 1, len(cats))))
         pages.append((path, last_change(c["path"]) or d["updated"]))
     write(OUT / "404.html", render_404(d))
     write(OUT / "style.css", (SITE_DIR / "style.css").read_text(encoding="utf-8"))
     write(OUT / "script.js", (SITE_DIR / "script.js").read_text(encoding="utf-8"))
-    write(OUT / "embed.js", (SITE_DIR / "embed.js").read_text(encoding="utf-8"))   # ?embed=acid: the site inside itspricedin.lol's IE window
     (OUT / "assets").mkdir(exist_ok=True)
     for name in ("categories-dark.svg", "growth-dark.svg", "sources-dark.svg", "social-preview.png"):
         shutil.copyfile(ASSETS / name, OUT / "assets" / name)
     write(OUT / "assets" / "favicon.svg", FAVICON)
-    write(OUT / ".nojekyll", "")
     write(OUT / "robots.txt", "User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n" % d["site"])
     urls = "\n".join("  <url><loc>%s/%s</loc><lastmod>%s</lastmod></url>" % (d["site"], esc(p), mod) for p, mod in pages)
     write(OUT / "sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
