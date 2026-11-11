@@ -2,13 +2,14 @@
 
 <h1 align="center">AI Security Corpus</h1>
 
+<p align="center"><a href="https://ai-security-corpus.online/"><b>ai-security-corpus.online</b></a></p>
+
 <p align="center">
   <b>5,660 links on AI security: prompt injection, LLM and AI agent security, MCP, coding agents, agent skills and supply chain, red teaming, guardrails, sandboxing, incidents and CVEs, governance.</b><br>
   <sub>One person's reading list that got out of hand. No gatekeeping: if it is even remotely about AI and/or security, it goes in. Added, not endorsed.</sub>
 </p>
 
 <p align="center">
-  <a href="https://ai-security-corpus.online/"><b>Browse the site</b></a> ·
   <a href="#-foundations">Foundations</a> ·
   <a href="#-attacks">Attacks</a> ·
   <a href="#-defense">Defense</a> ·
